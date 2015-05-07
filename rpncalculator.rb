@@ -9,12 +9,12 @@ class RPNCalculator
   end
 
   def run
-    print_input_indicator
+    show_input_indicator
 
     until (input = $stdin.gets.chomp) == END_OF_INPUT
       parse_input(input)
-      print_last_value
-      print_input_indicator
+      show_last_value
+      show_input_indicator
     end
   end
 end

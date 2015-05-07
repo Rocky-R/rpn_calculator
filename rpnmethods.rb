@@ -3,7 +3,7 @@ module RPNMethods
   OPERATORS = %w(+ - * / **)
   END_OF_INPUT = 'q'
 
-  def print_input_indicator
+  def show_input_indicator
     print INPUT_INDICATOR
   end
 
@@ -15,7 +15,7 @@ module RPNMethods
     end
   end
 
-  def print_last_value
+  def show_last_value
     value = stack.last
     p value.round(2)
   end

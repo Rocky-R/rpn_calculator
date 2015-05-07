@@ -1,10 +1,9 @@
 require './rpnmethods'
-require 'pry-nav'
 
 class RPNCalculator
   include RPNMethods
   attr_reader :stack
-  
+
   def initialize
     @stack = []
   end

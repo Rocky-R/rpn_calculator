@@ -1,5 +1,4 @@
 module RPNMethods
-
   INPUT_INDICATOR = '> '
   OPERATORS = %w(+ - * / **)
   END_OF_INPUT = 'q'
@@ -20,9 +19,11 @@ module RPNMethods
     value = stack.last
     p value.round(2)
   end
-  
+
   def process_operator(operator)
-    return unless stack.count >= 2
+    fail 'Not enough operands' unless stack.count >= 2
+    fail ZeroDivisionError, 'Can not divide by zero' if
+        stack.include?(0) && operator == '/'
   
     arg1, arg2 = stack.slice!(-2, 2)
     result = arg1.send(operator, arg2)

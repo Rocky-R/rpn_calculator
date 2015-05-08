@@ -2,6 +2,7 @@ module RPNMethods
   INPUT_INDICATOR = '> '
   OPERATORS = %w(+ - * / **)
   END_OF_INPUT = 'q'
+  CLEAR_STACK = 'c'
 
   def show_input_indicator
     print INPUT_INDICATOR
@@ -10,6 +11,8 @@ module RPNMethods
   def parse_input(input)
     if OPERATORS.include?(input)
       process_operator(input)
+    elsif input == CLEAR_STACK
+      @stack = []
     else
       stack.push(input.to_f)
     end
@@ -17,7 +20,7 @@ module RPNMethods
 
   def show_last_value
     value = stack.last
-    p value.round(2)
+    p value.round(2) if value
   end
 
   def process_operator(operator)
